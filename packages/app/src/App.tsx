@@ -36,6 +36,7 @@ import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
+import { Button } from '@material-ui/core';
 
 const app = createApp({
   apis,
@@ -100,6 +101,23 @@ const routes = (
 
 export default app.createRoot(
   <>
+    <Button
+      color="secondary"
+      variant="contained"
+      onClick={() => {
+        throw new Error(`Test error: NODE_ENV=${process.env.NODE_ENV}  `);
+      }}
+      style={{
+        position: 'fixed',
+        right: 0,
+        bottom: 0,
+        zIndex: 1,
+        marginRight: '2rem',
+        marginBottom: '1rem',
+      }}
+    >
+      Throw error
+    </Button>
     <AlertDisplay />
     <OAuthRequestDialog />
     <AppRouter>
