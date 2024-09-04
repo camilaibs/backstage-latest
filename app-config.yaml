@@ -58,7 +58,7 @@ proxy:
 techdocs:
   builder: 'local' # Alternatives - 'external'
   generator:
-    runIn: 'docker' # Alternatives - 'local'
+    runIn: 'local' # Alternatives - 'local'
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
@@ -78,6 +78,9 @@ catalog:
   rules:
     - allow: [Component, System, API, Resource, Location]
   locations:
+    # The Backstage project's own catalog entitiy
+    - type: file
+      target: ../../catalog-info.yaml
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file
       target: ../../examples/entities.yaml
